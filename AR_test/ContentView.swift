@@ -9,8 +9,17 @@ import SwiftUI
 import RealityKit
 
 struct ContentView : View {
+    var models: [String] = ["robot_walk","toy_biplane","toy_drummer"]
+    
+    
     var body: some View {
-        ARViewContainer().edgesIgnoringSafeArea(.all)
+        ZStack(alignment: .bottom) {
+            ARViewContainer()
+            
+            ModelPickerView(models: self.models)
+            
+            
+        }
     }
 }
 
@@ -20,19 +29,6 @@ struct ARViewContainer: UIViewRepresentable {
         
         let arView = ARView(frame: .zero)
 
-        // Create a cube model
-        let mesh = MeshResource.generateBox(size: 0.1, cornerRadius: 0.005)
-        let material = SimpleMaterial(color: .gray, roughness: 0.15, isMetallic: true)
-        let model = ModelEntity(mesh: mesh, materials: [material])
-        model.transform.translation.y = 0.05
-
-        // Create horizontal plane anchor for the content
-        let anchor = AnchorEntity(.plane(.horizontal, classification: .any, minimumBounds: SIMD2<Float>(0.2, 0.2)))
-        anchor.children.append(model)
-
-        // Add the horizontal plane anchor to the scene
-        arView.scene.anchors.append(anchor)
-
         return arView
         
     }
@@ -40,6 +36,36 @@ struct ARViewContainer: UIViewRepresentable {
     func updateUIView(_ uiView: ARView, context: Context) {}
     
 }
+
+struct ModelPickerView: View {
+    var models: [String]
+    
+    var body: some View {
+        
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 30) {
+                ForEach(self.models.indices, id: \.self) { index in
+                    Button(action: {
+                        print("DEBUG: selected model with name: \(self.models[index])")
+                    }) {
+                        Image(uiImage: UIImage(named: self.models[index])!)
+                            .resizable()
+                            .frame(height: 80)
+                            .aspectRatio(1/1, contentMode: .fit)
+                            .background(Color.white)
+                            .cornerRadius(12)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
+            }
+        }
+        .padding(20)
+        .background(Color.black.opacity(0.5))
+        
+    }
+}
+
+
 
 #Preview {
     ContentView()

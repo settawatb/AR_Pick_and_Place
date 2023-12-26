@@ -14,6 +14,9 @@
 		3F69FA712B3AE73C00D528E4 /* AR_testTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F69FA702B3AE73C00D528E4 /* AR_testTests.swift */; };
 		3F69FA7B2B3AE73C00D528E4 /* AR_testUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F69FA7A2B3AE73C00D528E4 /* AR_testUITests.swift */; };
 		3F69FA7D2B3AE73C00D528E4 /* AR_testUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F69FA7C2B3AE73C00D528E4 /* AR_testUITestsLaunchTests.swift */; };
+		3F69FA8E2B3AF52C00D528E4 /* robot_walk.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 3F69FA8B2B3AF52B00D528E4 /* robot_walk.usdz */; };
+		3F69FA8F2B3AF52C00D528E4 /* toy_biplane.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 3F69FA8C2B3AF52B00D528E4 /* toy_biplane.usdz */; };
+		3F69FA902B3AF52C00D528E4 /* toy_drummer.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 3F69FA8D2B3AF52C00D528E4 /* toy_drummer.usdz */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		3F69FA762B3AE73C00D528E4 /* AR_testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AR_testUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F69FA7A2B3AE73C00D528E4 /* AR_testUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AR_testUITests.swift; sourceTree = "<group>"; };
 		3F69FA7C2B3AE73C00D528E4 /* AR_testUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AR_testUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3F69FA8B2B3AF52B00D528E4 /* robot_walk.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = robot_walk.usdz; sourceTree = "<group>"; };
+		3F69FA8C2B3AF52B00D528E4 /* toy_biplane.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = toy_biplane.usdz; sourceTree = "<group>"; };
+		3F69FA8D2B3AF52C00D528E4 /* toy_drummer.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = toy_drummer.usdz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,7 @@
 			children = (
 				3F69FA5F2B3AE73B00D528E4 /* AppDelegate.swift */,
 				3F69FA612B3AE73B00D528E4 /* ContentView.swift */,
+				3F69FA8A2B3AF4D500D528E4 /* Models */,
 				3F69FA632B3AE73C00D528E4 /* Assets.xcassets */,
 				3F69FA652B3AE73C00D528E4 /* Preview Content */,
 			);
@@ -125,6 +132,16 @@
 				3F69FA7C2B3AE73C00D528E4 /* AR_testUITestsLaunchTests.swift */,
 			);
 			path = AR_testUITests;
+			sourceTree = "<group>";
+		};
+		3F69FA8A2B3AF4D500D528E4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3F69FA8B2B3AF52B00D528E4 /* robot_walk.usdz */,
+				3F69FA8C2B3AF52B00D528E4 /* toy_biplane.usdz */,
+				3F69FA8D2B3AF52C00D528E4 /* toy_drummer.usdz */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,8 +248,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F69FA8F2B3AF52C00D528E4 /* toy_biplane.usdz in Resources */,
 				3F69FA672B3AE73C00D528E4 /* Preview Assets.xcassets in Resources */,
 				3F69FA642B3AE73C00D528E4 /* Assets.xcassets in Resources */,
+				3F69FA8E2B3AF52C00D528E4 /* robot_walk.usdz in Resources */,
+				3F69FA902B3AF52C00D528E4 /* toy_drummer.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,7 +445,7 @@
 				DEVELOPMENT_TEAM = QM79H73DD3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Our app needs access to your camera to enabled to augmented reality experience";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
@@ -456,7 +476,7 @@
 				DEVELOPMENT_TEAM = QM79H73DD3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Our app needs access to your camera to enabled to augmented reality experience";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
