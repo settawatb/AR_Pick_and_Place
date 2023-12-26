@@ -9,7 +9,18 @@ import SwiftUI
 import RealityKit
 
 struct ContentView : View {
-    var models: [String] = ["robot_walk","toy_biplane","toy_drummer"]
+    private var models: [String] = {
+            let filemanager = FileManager.default
+            guard let path = Bundle.main.resourcePath, let files = try? filemanager.contentsOfDirectory(atPath:path) else {
+                return []
+            }
+            var availableModels: [String] = []
+            for filename in files where filename.hasSuffix("usdz") {
+                let modelName = filename.replacingOccurrences(of:".usdz", with: "")
+                availableModels.append(modelName)
+            }
+            return availableModels
+        }()
     
     
     var body: some View {
@@ -17,6 +28,8 @@ struct ContentView : View {
             ARViewContainer()
             
             ModelPickerView(models: self.models)
+            
+            PlacementButtonsView()
             
             
         }
@@ -62,6 +75,37 @@ struct ModelPickerView: View {
         .padding(20)
         .background(Color.black.opacity(0.5))
         
+    }
+}
+
+struct PlacementButtonsView: View {
+    var body: some View {
+        HStack {
+            // Cancel Button
+            Button(action: {
+                print("DEBUG: model placement canceled.")
+            }) {
+                Image(systemName: "xmark")
+                    .frame(width: 60, height: 60)
+                    .font(.title)
+                    .background(Color.white.opacity(0.75))
+                    .cornerRadius(30)
+                    .padding(20)
+            }
+            
+            // Confirm Button
+            
+            Button(action: {
+                print("DEBUG: model placement confirmed.")
+            }) {
+                Image(systemName: "checkmark")
+                    .frame(width: 60, height: 60)
+                    .font(.title)
+                    .background(Color.white.opacity(0.75))
+                    .cornerRadius(30)
+                    .padding(20)
+            }
+        }
     }
 }
 
