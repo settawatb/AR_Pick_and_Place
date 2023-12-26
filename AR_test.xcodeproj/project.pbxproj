@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F2219AD2B3B1B5800C50321 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 3F2219AC2B3B1B5800C50321 /* FocusEntity */; };
 		3F69FA602B3AE73B00D528E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F69FA5F2B3AE73B00D528E4 /* AppDelegate.swift */; };
 		3F69FA622B3AE73B00D528E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F69FA612B3AE73B00D528E4 /* ContentView.swift */; };
 		3F69FA642B3AE73C00D528E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F69FA632B3AE73C00D528E4 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 		3F69FA8E2B3AF52C00D528E4 /* robot_walk.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 3F69FA8B2B3AF52B00D528E4 /* robot_walk.usdz */; };
 		3F69FA8F2B3AF52C00D528E4 /* toy_biplane.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 3F69FA8C2B3AF52B00D528E4 /* toy_biplane.usdz */; };
 		3F69FA902B3AF52C00D528E4 /* toy_drummer.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 3F69FA8D2B3AF52C00D528E4 /* toy_drummer.usdz */; };
+		3F75453B2B3B10B500AB2B0F /* Model_products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F75453A2B3B10B500AB2B0F /* Model_products.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,7 @@
 		3F69FA8B2B3AF52B00D528E4 /* robot_walk.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = robot_walk.usdz; sourceTree = "<group>"; };
 		3F69FA8C2B3AF52B00D528E4 /* toy_biplane.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = toy_biplane.usdz; sourceTree = "<group>"; };
 		3F69FA8D2B3AF52C00D528E4 /* toy_drummer.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = toy_drummer.usdz; sourceTree = "<group>"; };
+		3F75453A2B3B10B500AB2B0F /* Model_products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model_products.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F2219AD2B3B1B5800C50321 /* FocusEntity in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +106,7 @@
 			children = (
 				3F69FA5F2B3AE73B00D528E4 /* AppDelegate.swift */,
 				3F69FA612B3AE73B00D528E4 /* ContentView.swift */,
+				3F75453A2B3B10B500AB2B0F /* Model_products.swift */,
 				3F69FA8A2B3AF4D500D528E4 /* Models */,
 				3F69FA632B3AE73C00D528E4 /* Assets.xcassets */,
 				3F69FA652B3AE73C00D528E4 /* Preview Content */,
@@ -160,6 +165,9 @@
 			dependencies = (
 			);
 			name = AR_test;
+			packageProductDependencies = (
+				3F2219AC2B3B1B5800C50321 /* FocusEntity */,
+			);
 			productName = AR_test;
 			productReference = 3F69FA5C2B3AE73B00D528E4 /* AR_test.app */;
 			productType = "com.apple.product-type.application";
@@ -232,6 +240,9 @@
 				Base,
 			);
 			mainGroup = 3F69FA532B3AE73B00D528E4;
+			packageReferences = (
+				3F2219AB2B3B1B5800C50321 /* XCRemoteSwiftPackageReference "FocusEntity" */,
+			);
 			productRefGroup = 3F69FA5D2B3AE73B00D528E4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -278,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F69FA622B3AE73B00D528E4 /* ContentView.swift in Sources */,
+				3F75453B2B3B10B500AB2B0F /* Model_products.swift in Sources */,
 				3F69FA602B3AE73B00D528E4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -612,6 +624,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3F2219AB2B3B1B5800C50321 /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maxxfrazer/FocusEntity";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3F2219AC2B3B1B5800C50321 /* FocusEntity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F2219AB2B3B1B5800C50321 /* XCRemoteSwiftPackageReference "FocusEntity" */;
+			productName = FocusEntity;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3F69FA542B3AE73B00D528E4 /* Project object */;
 }
