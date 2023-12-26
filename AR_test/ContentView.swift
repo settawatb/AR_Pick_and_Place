@@ -9,6 +9,10 @@ import SwiftUI
 import RealityKit
 
 struct ContentView : View {
+    @State private var isPlacementEnabled = false
+    @State private var selectedModel: String?
+    @State private var modelConfirmedForPlacement: String?
+    
     private var models: [String] = {
             let filemanager = FileManager.default
             guard let path = Bundle.main.resourcePath, let files = try? filemanager.contentsOfDirectory(atPath:path) else {
@@ -25,18 +29,23 @@ struct ContentView : View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            ARViewContainer()
             
-            ModelPickerView(models: self.models)
+            ARViewContainer(modelConfirmedForPlacement: self.$modelConfirmedForPlacement)
             
-            PlacementButtonsView()
-            
+            if self.isPlacementEnabled {
+                PlacementButtonsView(isPlacementEnabled: self.$isPlacementEnabled, selectedModel: self.$selectedModel, modelConfirmedForPlacement: self.$modelConfirmedForPlacement)
+                
+            } else {
+                ModelPickerView(isPlacementEnabled: self.$isPlacementEnabled, selectedModel: self.$selectedModel, models: self.models)
+            }
             
         }
     }
 }
 
 struct ARViewContainer: UIViewRepresentable {
+    
+    @Binding var modelConfirmedForPlacement: String?
     
     func makeUIView(context: Context) -> ARView {
         
@@ -46,11 +55,23 @@ struct ARViewContainer: UIViewRepresentable {
         
     }
     
-    func updateUIView(_ uiView: ARView, context: Context) {}
+    func updateUIView(_ uiView: ARView, context: Context) {
+        if let modelName = self.modelConfirmedForPlacement {
+            print("DEBUG: adding model to scene - \(modelName)")
+            
+            DispatchQueue.main.async {
+                self.modelConfirmedForPlacement = nil
+            }
+        }
+    }
     
 }
 
 struct ModelPickerView: View {
+    @Binding var isPlacementEnabled: Bool
+    @Binding var selectedModel: String?
+    
+    
     var models: [String]
     
     var body: some View {
@@ -60,6 +81,9 @@ struct ModelPickerView: View {
                 ForEach(self.models.indices, id: \.self) { index in
                     Button(action: {
                         print("DEBUG: selected model with name: \(self.models[index])")
+                        
+                        self.selectedModel = self.models[index]
+                        self.isPlacementEnabled = true
                     }) {
                         Image(uiImage: UIImage(named: self.models[index])!)
                             .resizable()
@@ -79,11 +103,17 @@ struct ModelPickerView: View {
 }
 
 struct PlacementButtonsView: View {
+    @Binding var isPlacementEnabled: Bool
+    @Binding var selectedModel: String?
+    @Binding var modelConfirmedForPlacement: String?
+    
     var body: some View {
         HStack {
             // Cancel Button
             Button(action: {
                 print("DEBUG: model placement canceled.")
+                
+                self.resetPlacementParameters()
             }) {
                 Image(systemName: "xmark")
                     .frame(width: 60, height: 60)
@@ -97,6 +127,10 @@ struct PlacementButtonsView: View {
             
             Button(action: {
                 print("DEBUG: model placement confirmed.")
+                
+                self.modelConfirmedForPlacement = self.selectedModel
+                
+                self.resetPlacementParameters()
             }) {
                 Image(systemName: "checkmark")
                     .frame(width: 60, height: 60)
@@ -106,6 +140,11 @@ struct PlacementButtonsView: View {
                     .padding(20)
             }
         }
+    }
+    
+    func resetPlacementParameters() {
+        self.isPlacementEnabled = false
+        self.selectedModel = nil
     }
 }
 
